@@ -6,7 +6,7 @@ Fixed::Fixed() : _numValue(0){
 }
 
 Fixed::~Fixed(){
-    std::cout << "Distructor called" << std::endl;
+    std::cout << "Destructor called" << std::endl;
     return ;
 }
 
@@ -36,5 +36,3 @@ void Fixed::setRawBits(int const raw){
     _numValue = raw;
     return ;
 }
-
-//const int Fixed::_fractionalBits = 8;
