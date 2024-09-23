@@ -1,9 +1,9 @@
 ORANGE	= \033[0;33m
 CYAN	= \033[0;36m
 
-NAME 	= ClapTrap
+NAME 	= ScavTrap
 SRCDIR	= .
-SRCS 	= main.cpp ClapTrap.cpp
+SRCS 	= main.cpp ClapTrap.cpp ScavTrap.cpp
 
 OBJSDIR = objs
 OBJS	= $(SRCS:%.cpp=$(OBJSDIR)/%.o)
