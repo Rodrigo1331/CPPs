@@ -23,6 +23,7 @@ class ScavTrap : public ClapTrap{
         ScavTrap(ScavTrap const &src);  //A copy constructor
         ScavTrap &operator=(ScavTrap const &rhs); // A copy assignment operator
 
+        void attack(const std::string &target);
         void guardGate();
         /* void attack(const std::string& target); */
 };

@@ -11,12 +11,12 @@
 /* ************************************************************************** */
 
 #include "ClapTrap.hpp"
-#include "ScavTrap.hpp"
+#include "FragTrap.hpp"
 
 int main (){
-    ScavTrap a("Maya");
-    ScavTrap b;
-    ScavTrap c(a);
+    FragTrap a("Maya");
+    FragTrap b;
+    FragTrap c(a);
 
     std::cout << std::endl;
     a.attack("Handsome Jack");
