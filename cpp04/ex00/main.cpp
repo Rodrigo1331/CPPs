@@ -12,18 +12,18 @@ int main(){
     std::cout << j->getType() << " " << std::endl;
     std::cout << i->getType() << " " << std::endl;
     i->makeSound(); // will output cat sound!
-    j->makeSound();
+    j->makeSound(); // will output dog sound!
     meta->makeSound();
 
-    std::cout << std::endl << std::endl;
+    /* std::cout << std::endl << std::endl;
 
-    /* const WrongAnimal *b = new WrongAnimal();
+    const WrongAnimal *b = new WrongAnimal();
     const WrongAnimal *a = new WrongCat();
 
     std::cout << b->getType() << std::endl;
     std::cout << a->getType() << std::endl;
     b->makeSound(); // will output wrongAnimal sound!
-    a->makeSound(); // will output wrongCat */
+    a->makeSound(); // will output wrongAnimal sound! */
 
     delete meta;
     delete j;

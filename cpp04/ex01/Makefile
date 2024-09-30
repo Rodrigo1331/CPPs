@@ -1,9 +1,9 @@
 ORANGE	= \033[0;33m
 CYAN	= \033[0;36m
 
-NAME 	= polymorphism
+NAME 	= polymorphism01
 SRCDIR	= .
-SRCS 	= main.cpp Animal.cpp Cat.cpp Dog.cpp WrongAnimal.cpp WrongCat.cpp
+SRCS 	= main.cpp Animal.cpp Cat.cpp Dog.cpp
 
 OBJSDIR = objs
 OBJS	= $(SRCS:%.cpp=$(OBJSDIR)/%.o)
