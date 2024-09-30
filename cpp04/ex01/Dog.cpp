@@ -33,3 +33,11 @@ Dog &Dog::operator=(Dog const &rhs){
 void Dog::makeSound() const{
     std::cout << "Woof woof" << std::endl;
 }
+
+void Dog::setIdea(int i, std::string idea){
+    _brain->ideas[i] = idea;
+}
+
+void Dog::coutIdeas(int i) const{
+    std::cout << "Dog idea " << _brain->ideas[i] << std::endl;
+}

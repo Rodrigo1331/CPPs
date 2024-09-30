@@ -27,3 +27,8 @@ std::string Animal::getType() const{
 void Animal::makeSound() const{
     std::cout << "Animal sound" << std::endl;
 }
+
+void Animal::coutIdeas(int i) const{
+    (void)i;
+    std::cout << "Animal has no ideas" << std::endl;
+}

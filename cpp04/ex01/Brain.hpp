@@ -14,13 +14,6 @@ class Brain
         std::string ideas[100];
 };
 
-//Upon construction, Dog and Cat will create their Brain using new Brain();
-//Upon destruction, Dog and Cat will delete their Brain.
-
-
-
-
-
 
 
 

@@ -33,3 +33,11 @@ Cat &Cat::operator=(Cat const &rhs){
 void Cat::makeSound() const{
     std::cout << "Meow" << std::endl;
 }
+
+void Cat::setIdea(int i, std::string idea){
+    _brain->ideas[i] = idea;
+}
+
+void Cat::coutIdeas(int i) const{
+    std::cout << "Cat ideas" << _brain->ideas[i] << std::endl;
+}
