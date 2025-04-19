@@ -2,6 +2,7 @@
 #include "PresidentialPardonForm.hpp"
 #include "ShrubberyCreationForm.hpp"
 #include "RobotomyRequestForm.hpp"
+#include "Intern.hpp"
 
 #define RED "\033[0;31m"
 #define GREEN "\033[1;32m"
@@ -60,31 +61,23 @@ void    formTest( AForm *form, Bureaucrat *b, std::string color)
 
 int main()
 {
-    /* PresidentialPardonForm p("teste");
-    ShrubberyCreationForm s("teste");
-    RobotomyRequestForm r("teste"); */
-
-    Bureaucrat  b1( "b1", 150 );
-    Bureaucrat  b2( "b2", 1 );
-
-    /* Try PresidentialPardon */
-    AForm *form1 = new PresidentialPardonForm( "pardon" );
-    formTest( form1, &b1, RED );
-    formTest( form1, &b2, RED );
+    try {
+        PresidentialPardonForm b2("p1");
+        /* Bureaucrat  b1( "b1", 150 ); */
+    }
+    catch(const std::exception& e)
+    {
+        std::cerr << e.what() << '\n';
+    }
     
-    /* Try ShrubberyCreation */
-    AForm *form2 = new ShrubberyCreationForm( "tree" );
-    formTest(form2, &b1, GREEN);
-    formTest(form2, &b2, GREEN);
+    PresidentialPardonForm b2("p1");
+    /* Bureaucrat  b2( "b2", 1 ); */
+    Intern teste;
 
-    /* Try RobotomyRequest */
-    AForm *form3 = new RobotomyRequestForm( "robot" );
-    formTest( form3, &b1, CYAN );
-    formTest( form3, &b2, CYAN );
-
+    AForm *form1 = teste.makeForm("asdasd", "" );
+    
+    std::cout << form1 << std::endl;
+    
     delete ( form1 );
-    delete ( form2 );
-    delete ( form3 );
-
     return ( 0 );
 }
