@@ -1,9 +1,9 @@
 ORANGE	= \033[0;33m
 CYAN	= \033[0;36m
 
-NAME 	= serialization
+NAME 	= base
 SRCDIR	= .
-SRCS 	= main.cpp ScalarConverter.cpp
+SRCS 	= main.cpp Base.cpp
 
 OBJSDIR = objs
 OBJS	= $(SRCS:%.cpp=$(OBJSDIR)/%.o)

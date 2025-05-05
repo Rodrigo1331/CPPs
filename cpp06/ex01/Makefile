@@ -3,7 +3,7 @@ CYAN	= \033[0;36m
 
 NAME 	= serialization
 SRCDIR	= .
-SRCS 	= main.cpp ScalarConverter.cpp
+SRCS 	= main.cpp Serializer.cpp
 
 OBJSDIR = objs
 OBJS	= $(SRCS:%.cpp=$(OBJSDIR)/%.o)
