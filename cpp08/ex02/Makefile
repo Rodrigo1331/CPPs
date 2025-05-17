@@ -1,9 +1,9 @@
 ORANGE	= \033[0;33m
 CYAN	= \033[0;36m
 
-NAME 	= snap
+NAME 	= mutantStack
 SRCDIR	= .
-SRCS 	= main.cpp Span.cpp
+SRCS 	= main.cpp
 
 OBJSDIR = objs
 OBJS	= $(SRCS:%.cpp=$(OBJSDIR)/%.o)
