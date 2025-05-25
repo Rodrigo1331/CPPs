@@ -13,7 +13,8 @@ ScalarConverter::ScalarConverter(const ScalarConverter &src){
 }
 
 ScalarConverter &ScalarConverter::operator=(const ScalarConverter &rhs){
-    *this = rhs;
+    if (this != &rhs)
+        *this = rhs;
     return (*this);
 }
 
@@ -53,8 +54,8 @@ void ScalarConverter::convert(const std::string value){
     else if(value == "+inff" || value == "+inf"){
         std::cout << "char: Non displayable" << std::endl;
         std::cout << "int: Overload" << std::endl;
-        std::cout << "float: +" << -std::numeric_limits<double>::infinity() << "f" << std::endl;
-        std::cout << "double: +" << -std::numeric_limits<double>::infinity() << std::endl;
+        std::cout << "float: +" << std::numeric_limits<double>::infinity() << "f" << std::endl;
+        std::cout << "double: +" << std::numeric_limits<double>::infinity() << std::endl;
     }
     else if (value == "nan"){
         std::cout << "char: Impossible" << std::endl;

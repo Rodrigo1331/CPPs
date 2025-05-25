@@ -9,6 +9,7 @@ typedef struct Data{
     std::string string;
     int integer;
     double doubleValue;
+	float floatValue;
     bool boolValue;
 } Data;
 

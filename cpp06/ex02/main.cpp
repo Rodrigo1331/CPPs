@@ -10,9 +10,11 @@ int main(void){
 
     identify(obj);
     identify(*obj);
+	delete obj;
 }
 
 /* It randomly instanciates A, B or C and returns the instance as a Base pointer */
+/* return (new A()) is an upcast */
 Base * generate(void)
 {
 	srand(time( NULL ));
@@ -36,17 +38,45 @@ Base * generate(void)
 
 /* Downcasting, converting a pointer or reference to the base class */
 void identify(Base *p){
-    if (0 != dynamic_cast<A *>(p))
+    if (0 != dynamic_cast<A*>(p))
         std::cout << "Type of the object: A" << std::endl;
-    else if (0 != dynamic_cast<B *>(p))
+    else if (0 != dynamic_cast<B*>(p))
         std::cout << "Type of the object: B" << std::endl;
-    else if (0 != dynamic_cast<C *>(p))
+    else if (0 != dynamic_cast<C*>(p))
         std::cout << "Type of the object: C" << std::endl;
     else
         std::cout << "It's not a valid type" << std::endl;
 }
 
-void identify(Base &p){
+// Try/catch instead of if
+void identify(Base &p)
+{
+	try
+	{
+		A &a = dynamic_cast<A&>(p);
+		(void)a;
+		std::cout << "Type of the object: A" << std::endl;
+	}
+	catch (std::exception &e) {}
+
+	try
+	{
+		B &b = dynamic_cast<B&>(p);
+		(void)b;
+		std::cout << "Type of the object: B" << std::endl;
+	}
+	catch (std::exception &e) {}
+
+	try
+	{
+		C &c = dynamic_cast<C&>(p);
+		(void)c;
+		std::cout << "Type of the object: C" << std::endl;
+	}
+	catch (std::exception &e) {}
+}
+
+/* void identify(Base &p){
     if (0 != dynamic_cast<A *>(&p))
         std::cout << "Type of the object: A" << std::endl;
     else if (0 != dynamic_cast<B *>(&p))
@@ -55,5 +85,4 @@ void identify(Base &p){
         std::cout << "Type of the object: C" << std::endl;
     else
         std::cout << "It's not a valid type" << std::endl;
-}
-
+} */
