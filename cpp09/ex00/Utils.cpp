@@ -87,6 +87,14 @@ bool	isValidDate(std::string dateCandidate){
 		else if (month == FEB && !isLeapYear(year) && day > 28)
 			return (false);
 
+		// Reject dates earlier that are too early
+		if (year < 2009)
+			return false;
+		if (year == 2009 && month < 1)
+			return false;
+		if (year == 2009 && month == 1 && day < 2)
+			return false;
+
 		return (true);
 	}
 	return (false); // false by format
