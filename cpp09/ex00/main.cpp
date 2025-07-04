@@ -16,6 +16,10 @@ int main(int argc, char const **argv)
 		std::cerr << e.what() << std::endl;
 		return (1);
 	}
+	if (!isValidSha1sum()){
+		std::cout << "Invalid data.csv, can't be changed" << std::endl;
+		return 0;
+	}
 	bitcoinExchange.dataBaseMapStorage();
 	bitcoinExchange.btc();
 

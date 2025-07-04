@@ -72,7 +72,7 @@ std::vector<int> PmergeMe::mergeInsertionSortVector(const std::vector<int> &inpu
     }
 
     std::vector<std::pair<int, int> > pairs; // Divide in pairs 
-    int last = -1;
+    int lastValue = -1;
     for (int i = 0; i + 1 < n; i += 2){
         if (inputValues[i] < inputValues[i + 1])
             pairs.push_back(std::make_pair(inputValues[i + 1], inputValues[i]));
@@ -80,7 +80,7 @@ std::vector<int> PmergeMe::mergeInsertionSortVector(const std::vector<int> &inpu
             pairs.push_back(std::make_pair(inputValues[i], inputValues[i + 1]));
     }
     if (n % 2 == 1){
-        last = inputValues.back();
+        lastValue = inputValues.back();
     }
 
     // Recursively sort the larger numbers
@@ -109,11 +109,11 @@ std::vector<int> PmergeMe::mergeInsertionSortVector(const std::vector<int> &inpu
     /* 
         Push all the a_values numbers (already sorted)
     */
-    std::vector<int> result;
-    result.push_back(ordered_pairs[0].second);
-    result.push_back(ordered_pairs[0].first);
+    std::vector<int> finalResult;
+    finalResult.push_back(ordered_pairs[0].second);
+    finalResult.push_back(ordered_pairs[0].first);
     for (size_t i = 1; i < ordered_pairs.size(); ++i)
-        result.push_back(ordered_pairs[i].first);
+        finalResult.push_back(ordered_pairs[i].first);
 
     /* 
         Push all the b_values numbers
@@ -121,8 +121,8 @@ std::vector<int> PmergeMe::mergeInsertionSortVector(const std::vector<int> &inpu
     std::vector<int> b_values;
     for (size_t i = 1; i < ordered_pairs.size(); ++i)
         b_values.push_back(ordered_pairs[i].second);
-    if (last != -1)
-        b_values.push_back(last);
+    if (lastValue != -1)
+        b_values.push_back(lastValue);
 
 
     std::vector<int> insertion_order = genJacobsthalInsertionOrderVec(b_values.size()); // Jacobsthal insertion method
@@ -131,11 +131,11 @@ std::vector<int> PmergeMe::mergeInsertionSortVector(const std::vector<int> &inpu
         int idx = insertion_order[i];
         int upperBound = idx + 2 + k;       //Max index it can be inserted in (+2 for the 2 pushes in the beginning && k as the list grows)
         if (idx < (int)b_values.size()){
-            binaryInsertVec(result, b_values[idx], upperBound);
+            binaryInsertVec(finalResult, b_values[idx], upperBound);
             k++;
         }
     }
-    return result;
+    return finalResult;
 }
 
 
@@ -158,19 +158,19 @@ static std::deque<int> genJacobsthalInsertionOrderDeq(int n){
 
     // For each Jacobsthal interval, insert in descending order
     // b3 b2 b5 b4 b11 b10 b9...
-    std::deque<int> order;
+    std::deque<int> orderVec;
     int prev = 1;
     for (size_t i = 1; i < jacob.size(); ++i){
         int curr = jacob[i];
         int upper = std::min(curr, n);
         for (int j = upper; j > prev; --j){
-            order.push_back(j - 2);
+            orderVec.push_back(j - 2);
         }
         prev = curr;
-        if ((int)order.size() >= n - 1) // -1 to convert to 0-based && -1 to skip over the first pair
+        if ((int)orderVec.size() >= n - 1) // -1 to convert to 0-based && -1 to skip over the first pair
             break;
     }
-    return order;
+    return orderVec;
 }
 
 /*
@@ -198,14 +198,14 @@ std::deque<int> PmergeMe::mergeInsertionSortDeque(const std::deque<int> &inputVa
 
 
     std::deque<std::pair<int, int> > pairs;
-    int last = -1;
+    int lastValue = -1;
     for (int i = 0; i + 1 < n; i += 2){
         if (inputValues[i] < inputValues[i + 1])
             pairs.push_back(std::make_pair(inputValues[i + 1], inputValues[i]));
         else
             pairs.push_back(std::make_pair(inputValues[i], inputValues[i + 1]));
     }
-    if (n % 2 == 1) last = inputValues.back();
+    if (n % 2 == 1) lastValue = inputValues.back();
 
     std::deque<int> a_values;
     for (size_t i = 0; i < pairs.size(); ++i)
@@ -244,8 +244,8 @@ std::deque<int> PmergeMe::mergeInsertionSortDeque(const std::deque<int> &inputVa
     std::deque<int> b_values;
     for (size_t i = 1; i < ordered_pairs.size(); ++i)
         b_values.push_back(ordered_pairs[i].second);
-    if (last != -1)
-        b_values.push_back(last);
+    if (lastValue != -1)
+        b_values.push_back(lastValue);
 
     std::deque<int> insertion_order = genJacobsthalInsertionOrderDeq(b_values.size());
     int k = 0;
